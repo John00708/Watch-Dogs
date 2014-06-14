@@ -1,0 +1,16 @@
+name: Watch-Blocks
+version: 1
+description: A plugin to simulate the game Watch-Dogs.
+load: STARTUP
+author: The Altitude Dev Team
+main: altitude.source.code.Main
+database: false
+depend:
+prefix: Watch-Blocks
+softdepend: 
+loadbefore: 
+commands:
+  watchtest:
+    description: A dummy command!
+    usage: /watchtest
+permissions: 
