@@ -15,8 +15,8 @@ public class Main extends JavaPlugin{
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("watchtest")) {
-			sender.sendMessage(ChatColor.AQUA + "The dummy command works!")
+		if (cmd.getName().equalsIgnoreCase("watchtest")) { // Adding a dummy command
+			sender.sendMessage(ChatColor.AQUA + "The dummy command works!") // Sending an Aqua Message back to test if it works
 			return true;
 		}
 		return false; 
