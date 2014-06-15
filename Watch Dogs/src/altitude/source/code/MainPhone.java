@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class MainPhone extends JavaPlugin implements Listener{
 	
-	private void openGUI(Player, player) {
+	public void openGUI(Player player) {
 		Inventory inv = Bukkit.createInventory(null, 9, ChatColor.ORANGE + "Hack Selector");
 		
 		ItemStack camera = new ItemStack(Material.GLASS_BLOCK);
