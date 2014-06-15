@@ -38,7 +38,7 @@ public class MainPhone extends JavaPlugin implements Listener{
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		event.getPlayer().getInventory().addItem(new ItemStack(Material.FLINT));
+		event.getPlayer().getInventory().addItem(new ItemStack(Material.FLINT, minecraft:flint));
 	}
 	
 	
