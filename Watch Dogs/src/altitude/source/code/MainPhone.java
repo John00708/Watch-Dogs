@@ -38,7 +38,7 @@ public class MainPhone extends JavaPlugin implements Listener{
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		event.getPlayer().getInventory().addItem(new ItemStack(Material.FLINT, minecraft:flint));
+		event.getPlayer().getInventory().addItem(new ItemStack(Material.COMPASS, minecraft:compass));
 	}
 	
 	
@@ -50,7 +50,7 @@ public class MainPhone extends JavaPlugin implements Listener{
 		if(a == Action.PHYSICAL || is == null || is.getType()==Material.AIR)
 			return;
 		
-		if(is.getType()==Material.FLINT)
+		if(is.getType()==Material.COMPASS, minecraft:compass)
 			openGUI(event.getPlayer());
 	}
 	
