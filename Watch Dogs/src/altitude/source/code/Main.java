@@ -8,7 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin{
 	@Override
 	public void onEnable() {
-		getLogger().info("Watch-Dogs v1 has been enabled!"); // Showing when the plugin has been enabled
+		getLogger().info("Watch-Dogs v1 has been enabled!"); 
+		getServer().getPluginManager().registerEvents(this, this);
 	}
 	@Override
 	public void onDisable() {
