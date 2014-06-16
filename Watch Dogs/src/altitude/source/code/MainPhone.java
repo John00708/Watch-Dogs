@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
@@ -22,9 +23,9 @@ public class MainPhone implements Listener{
 		Inventory inv = Bukkit.createInventory(null, 9, ChatColor.GOLD + "Hack Selector");
 		
 		ItemStack camera = new ItemStack(Material.GLASS);
-		ItemMeta cameraMeta = camera.getItemMeta();
+		ItemMeta cameraMeta = camera.getItemMeta(); //MetaData for camera item
 		ItemStack info = new ItemStack(Material.PAPER);
-		ItemMeta infoMeta = info.getItemMeta();
+		ItemMeta infoMeta = info.getItemMeta(); //MetaData for info item
 		
 		cameraMeta.setDisplayName(ChatColor.DARK_GREEN + "Security Camera");
 		camera.setItemMeta(cameraMeta);
@@ -32,7 +33,7 @@ public class MainPhone implements Listener{
 		infoMeta.setDisplayName(ChatColor.DARK_BLUE + "Personal Info");
 		info.setItemMeta(cameraMeta);
 		
-		inv.setItem(3, camera);
+		inv.setItem(3, camera); //Putting the items inside the inv
 		inv.setItem(4, info);
 		
 		player.openInventory(inv);
@@ -49,14 +50,35 @@ public class MainPhone implements Listener{
 		Action a = event.getAction();
 		ItemStack is = event.getItem();
 		
-		if(a == Action.PHYSICAL || is == null || is.getType()==Material.AIR)
+		if(a == Action.PHYSICAL || is == null || is.getType()==Material.AIR){
 			return;
-		
-		if(is.getType()==Material.COMPASS);
+		}
+		if(is.getType()==Material.COMPASS);{
 			openGUI(event.getPlayer());
+		}
 	}
 	
-	
+	@EventHandler
+	public void onInvClick(InventoryClickEvent e) {
+		if(ChatColor.stripColor(e.getInventory().getName()).equalsIgnoreCase("Hack Selector")){		
+			e.setCancelled(true);
+			if(e.getCurrentItem()==null || e.getCurrentItem().getType()==Material.AIR || !e.getCurrentItem().hasItemMeta());{
+				Player player = (Player) e.getWhoClicked();
+				player.closeInventory();
+				return;
+			}
+		}
+		switch (e.getCurrentItem().getType()) {
+		case GLASS:
+			//Do they stuff when they click the camera (the glass)
+
+			break;
+		case PAPER:
+			//Do stuff when they click the info ()
+
+			break;
+		}
+	}
 	
 	
 
