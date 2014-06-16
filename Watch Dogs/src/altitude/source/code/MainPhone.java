@@ -1,13 +1,12 @@
 package altitude.source.code;
 
+import org.bukkit.event.Listener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -15,8 +14,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class MainPhone extends JavaPlugin implements Listener{
-	
+public class MainPhone implements Listener{
+	public MainPhone(Main plugin){
+		plugin.getServer().getPluginManager().registerEvents(this, plugin);
+	}
 	public void openGUI(Player player) {
 		Inventory inv = Bukkit.createInventory(null, 9, ChatColor.GOLD + "Hack Selector");
 		
@@ -58,4 +59,6 @@ public class MainPhone extends JavaPlugin implements Listener{
 	
 	
 	
+
+
 }

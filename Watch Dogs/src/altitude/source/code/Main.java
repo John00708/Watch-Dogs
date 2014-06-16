@@ -11,6 +11,7 @@ public class Main extends JavaPlugin implements Listener{
 	public void onEnable() {
 		getLogger().info("Watch-Dogs v1 has been enabled!"); 
 		getServer().getPluginManager().registerEvents(this, this);
+		new MainPhone(this);
 	}
 	@Override
 	public void onDisable() {
