@@ -1,4 +1,4 @@
-package altitude.source.code
+package altitude.source.code;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -36,13 +37,13 @@ public class MainPhone extends JavaPlugin implements Listener{
 		player.openInventory(inv);
 	}
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		event.getPlayer().getInventory().addItem(new ItemStack(Material.COMPASS, minecraft:compass));
+		event.getPlayer().getInventory().addItem(new ItemStack(Material.COMPASS));
 	}
 	
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		Action a = event.getAction();
 		ItemStack is = event.getItem();
@@ -50,7 +51,7 @@ public class MainPhone extends JavaPlugin implements Listener{
 		if(a == Action.PHYSICAL || is == null || is.getType()==Material.AIR)
 			return;
 		
-		if(is.getType()==Material.COMPASS, minecraft:compass)
+		if(is.getType()==Material.COMPASS);
 			openGUI(event.getPlayer());
 	}
 	
