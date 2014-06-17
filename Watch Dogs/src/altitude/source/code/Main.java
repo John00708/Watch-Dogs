@@ -9,13 +9,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin implements Listener{
 	@Override
 	public void onEnable() {
-		getLogger().info("Watch-Dogs v1 has been enabled!"); 
+		getLogger().info("Watch-Blocks v1.1 has been enabled!"); 
 		getServer().getPluginManager().registerEvents(this, this);
 		new MainPhone(this);
 	}
 	@Override
 	public void onDisable() {
-		getLogger().info("Watch-Dogs v1 has been disabled!"); // Showing when the plugin has been disabled
+		getLogger().info("Watch-Blocks v1.1 has been disabled!"); // Showing when the plugin has been disabled
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
