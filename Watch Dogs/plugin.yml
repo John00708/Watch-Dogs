@@ -13,10 +13,11 @@ commands:
   watchtest:
     description: A dummy command!
     usage: /watchtest
+    permission: watchblocks.watchtest
 permissions: 
     watchblocks.*:
         description: Gives all permissions in the plugin.
         default: op
-    watchtest:
+    watchblocks.watchtest:
         description: Gives permission for the watchtest command.
         default: op
