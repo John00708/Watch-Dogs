@@ -20,7 +20,7 @@ public class Main extends JavaPlugin implements Listener{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("watchtest")) { // Adding a dummy command
-			sender.sendMessage(ChatColor.AQUA + "The dummy command works!"); // Sending an Aqua Message back to test if it works
+			sender.sendMessage(ChatColor.AQUA + "The test command works! As of now."); // Sending an Aqua Message back to test if it works
 			return true;
 		}
 		return false; 
