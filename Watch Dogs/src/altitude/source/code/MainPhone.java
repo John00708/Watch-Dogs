@@ -69,11 +69,20 @@ public class MainPhone implements Listener{
 			}
 		}
 		switch (e.getCurrentItem().getType()) {
-		case GLASS:
-			//Do they stuff when they click the camera (the glass)
+		case GLASS: //Do stuff when the look at the glass (Camera) Cursor
+			 public void onPlayerInteractBlock(PlayerInteractEvent e) {
+			 	Player player = e.getPlayer();
+			 	if (player.getItemInHand().getType() == Material.CLOCK)
+			 	
+			 	//Every thing I have tried doesn't work with the tp code
+			 }
+
 
 			break;
 		case PAPER:
+			public void onInvClick(InventoryClickEvent e) {
+				
+			}
 			//Do stuff when they click the info ()
 
 			break;
