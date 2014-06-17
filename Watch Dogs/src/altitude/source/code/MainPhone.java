@@ -27,10 +27,10 @@ public class MainPhone implements Listener{
 		ItemStack info = new ItemStack(Material.PAPER);
 		ItemMeta infoMeta = info.getItemMeta(); //MetaData for info item
 		
-		cameraMeta.setDisplayName(ChatColor.DARK_GREEN + "Security Camera");
+		cameraMeta.setDisplayName(ChatColor.DARK_GREEN + "Security Camera"); //Setting the name of the block
 		camera.setItemMeta(cameraMeta);
 		
-		infoMeta.setDisplayName(ChatColor.DARK_BLUE + "Personal Info");
+		infoMeta.setDisplayName(ChatColor.DARK_BLUE + "Personal Info"); //Setting the name of the item
 		info.setItemMeta(cameraMeta);
 		
 		inv.setItem(3, camera); //Putting the items inside the inv
