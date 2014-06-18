@@ -27,6 +27,7 @@ public class MainCampaign {
 			System.out.println("[2] Lure the cops away");
 			//Actions? "1" System.out.read("1") then do some thing? -Ice 
 			//Didn't know were you guys were at on this currently.
+			//well i was just mapping out some of the things we would have to do later in the future ~voracious
 		}
 	}
 }
