@@ -1,5 +1,7 @@
 package altitude.source.code;
 
+import java.util.Scanner;
+
 import org.bukkit.entity.Player;
 
 public class MainCampaign {

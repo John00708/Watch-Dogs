@@ -14,6 +14,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -74,7 +75,8 @@ public class MainPhone implements Listener{
 		}
 		switch (e.getCurrentItem().getType()) {
 		case GLASS: //Do stuff when the look at the glass (Camera) Cursor
-			public void onPlayerInteractBlock(PlayerInteractEvent e) {
+	@EventHandler
+	public void onPlayerInteractBlock(PlayerInteractEvent e) {
 				 
 			 	Player player = e.getPlayer();
 			 	
@@ -87,7 +89,12 @@ public class MainPhone implements Listener{
 			 		Location location = targetblock.getLocation();
 			 		player.getWorld().spawnCreature(beforeloc, EntityType.ZOMBIE);
 			 		player.teleport(location);
-			 		e.getPlayer().setVelocity(new Vector().zero());
+			 		boolean freeze = true;
+			 		public void OnPlayerMove (PlayerMoveEvent e){
+			 			if (freeze == true){
+			 				e.setCancelled(true);
+			 			}
+			 		}
 			 		
 			      }
 			 	}
