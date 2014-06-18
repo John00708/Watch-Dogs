@@ -16,11 +16,13 @@ public class MainCampaign {
 		int input;
 		
 		do {
-			System.out.prinln("[0] Quit. ");
+			System.out.println("[0] Quit. ");
 			System.out.println("[1] Shoot Maurice.");
 			System.out.println("[2] Sneak past the Police.");
 			System.out.println("[3] Hack the camera to unlock the door.");
 			System.out.println("[2] Lure the cops away");
+			//Actions? "1" System.out.read("1") then do some thing? -Ice 
+			//Didn't know were you guys were at on this currently.
 		}
 	}
 }
