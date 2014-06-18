@@ -16,24 +16,12 @@ public class MainPlayer extends Entity {
 		return name;
 	}
 	
-	public int getHealth() {
-		return health;
-	}
-	
 	public double getMoney() {
 		return money;
 	}
 	
-	public void setHealth(int h) {
-		health = h;
-	}
-	
 	public void setMoney(double m) {
 		money = m;
-	}
-	
-	public void modifyHealth (int h) {
-		health += h;
 	}
 	
 	public void modifyMoney(double m) {
