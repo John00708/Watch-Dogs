@@ -1,5 +1,7 @@
 package altitude.source.code;
 
+import org.bukkit.entity.Player;
+
 public class MainCampaign {
 	// This is the class that we can make the campaign in
 	public static void main(String[] args) {

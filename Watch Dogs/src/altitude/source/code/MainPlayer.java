@@ -6,7 +6,7 @@ public class MainPlayer {
 	private int health;
 	private double money;
 	
-	public Player(String n) {
+	public void Player(String n) {
 		name = n;
 		health = 10;
 		money = 19.99;
@@ -29,7 +29,7 @@ public class MainPlayer {
 	}
 	
 	public void setMoney(double m) {
-		moeny = m;
+		money = m;
 	}
 	
 	public void modifyHealth (int h) {

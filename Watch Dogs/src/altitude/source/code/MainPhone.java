@@ -1,9 +1,12 @@
 package altitude.source.code;
 
+import org.bukkit.block.Block;
 import org.bukkit.event.Listener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,6 +17,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
 
 public class MainPhone implements Listener{
 	public MainPhone(Main plugin){
@@ -70,17 +74,31 @@ public class MainPhone implements Listener{
 		}
 		switch (e.getCurrentItem().getType()) {
 		case GLASS: //Do stuff when the look at the glass (Camera) Cursor
-			 public void onPlayerInteractBlock(PlayerInteractEvent e) {
+			public void onPlayerInteractBlock(PlayerInteractEvent e) {
+				 
 			 	Player player = e.getPlayer();
-			 	if (player.getItemInHand().getType() == Material.CLOCK)
+			 	
+			 	player.sendMessage(ChatColor.DARK_GREEN + "When clicking the camera, you must look directly at it");
+			 	
+			 	Block targetblock = player.getTargetBlock(null, 150);
+			 	if (targetblock.getType() == Material.GLASS){
+			 		
+			 		Location beforeloc = player.getLocation();
+			 		Location location = targetblock.getLocation();
+			 		player.getWorld().spawnCreature(beforeloc, EntityType.ZOMBIE);
+			 		player.teleport(location);
+			 		e.getPlayer().setVelocity(new Vector().zero());
+			 		
+			      }
+			 	}
 			 	
 			 	//Every thing I have tried doesn't work with the tp code
-			 }
+			 
 
 
 			break;
 		case PAPER:
-			public void onInvClick(InventoryClickEvent e) {
+			public void onPlayerClickInv(InventoryClickEvent e) {
 				
 			}
 			//Do stuff when they click the info ()
