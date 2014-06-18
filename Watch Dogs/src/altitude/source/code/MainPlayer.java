@@ -1,6 +1,6 @@
 package altitude.source.code;
 
-public class MainPlayer {
+public class MainPlayer extends Entity {
 	//This is the class for Nathan to work on
 	private String name;
 	private int health;
