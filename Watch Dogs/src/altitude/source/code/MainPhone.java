@@ -90,7 +90,8 @@ public class MainPhone implements Listener{
 			 		player.getWorld().spawnCreature(beforeloc, EntityType.ZOMBIE);
 			 		player.teleport(location);
 			 		boolean freeze = true;
-			 		public void OnPlayerMove (PlayerMoveEvent e){
+			 		player.setVelocity(new Vector(player.getVelocity().getX(), 0, player.getVelocity().getZ()));
+			 		public void OnPlayerMove(PlayerMoveEvent e){
 			 			if (freeze == true){
 			 				e.setCancelled(true);
 			 			}

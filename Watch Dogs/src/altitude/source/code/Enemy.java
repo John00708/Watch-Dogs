@@ -4,7 +4,7 @@ public class Enemy extends Entity {
   
   privatae int level;
   
-  public Monster(int level) {
+  public void Monster(int level) {
     setHealth(level * 2);
     
   }
