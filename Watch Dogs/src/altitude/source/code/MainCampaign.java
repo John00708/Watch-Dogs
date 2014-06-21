@@ -5,19 +5,12 @@ import java.util.Scanner;
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.event.Listener
 
-public class MainCampaign extends JavaPlugin{
+public class MainCampaign extends JavaPlugin implements Listener{
 	
-	public void onDisable() {
-		PluginDescriptionFile pdffile = this.getDescription();
-		this.logger.info(pdffile.getName() + "Has Been Disabled!");
-	}
 	
-	public void onEnable() {
-		PluginDescriptionFile pdffile = this.getDescription();
-		this.logger.info(pdffile.getName() + " Version " + pdffile.getVersion() + " Has Been Enabled!");
-	}
-	
+	public void player.sendRawMessage("Welcome to Watch_Blocks");
 		}
 	}
 }
