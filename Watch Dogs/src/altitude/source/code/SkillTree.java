@@ -14,8 +14,18 @@ public class SkillTree extends JavaPlugin{
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
       Player player = (Player) sender;
       if(commandLabel.equalsIgnoreCase("st")){
-        if(args.length == 0){
-          player.sendMessage(ChatColor.DARK_RED + "/sk <Skill>");
+      	if(commandLabel.equalsIgnoreCase("driving")){
+      		player.sendMessage("accesing...");
+      	}else if(commandLabel.equalsIgnoreCase("hacking")){
+      		player.sendMessage("accesing...");
+      	}else if(commandLabel.equalsIgnoreCase("combat")){
+      		player.sendMessage("accesing...");
+      	}else if(commandLabel.equalsIgnoreCase("crafting")){
+      		player.sendMessage("accesing...");
+      	}else if(commandLabel.equalsIgnoreCase("weaponry")){
+      		player.sendMessage("accesing...");
+      	}
+        
         }
       }
 	return true;
