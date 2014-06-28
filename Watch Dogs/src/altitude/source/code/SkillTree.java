@@ -1,16 +1,11 @@
-package altitude.source.code;
-
-import java.util.logging.logger;[]
+package altitude.source.code;å
 
 public class SkillTree extends JavaPlugin{
-  public final Logger logger = Logger.getLogger("Minecraft");
-  public static Watch-Dogs plugin;
-  
+	
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
       Player player = (Player) sender;
-      if(commandLabel.equalsIgnoreCase("st")){
-        if(args.length == 0){
-          player.sendMessage(ChatColor.DARK_RED + "/sk <Skill>");
+      if(commandLabel.equalsIgnoreCase("skill")){
+        player.sendMessage(ChatColor.DARK_RED + "This works!å")
         }
       }
     }
