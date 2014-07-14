@@ -1,15 +1,15 @@
 package altitude.source.code;
 
-import org.bukkit.block.Block;
-import org.bukkit.event.Listener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -45,8 +45,14 @@ public class MainPhone implements Listener{
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		event.getPlayer().getInventory().addItem(new ItemStack(Material.COMPASS));
+	public boolean onPlayerJoin(PlayerJoinEvent event) {
+		if(!event.getPlayer().getInventory().contains(Material.COMPASS)){
+			event.getPlayer().sendMessage(ChatColor.GREEN + "You just got your phone! Happy hacking!");
+			event.getPlayer().getInventory().addItem(new ItemStack(Material.COMPASS));
+		}else{
+			return false;
+		}
+		return false;
 	}
 	
 	
