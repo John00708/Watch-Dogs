@@ -5,10 +5,8 @@ load: STARTUP
 authors: The Altitude Dev Team (MrShrimpy, giannis1234575, moonshyne1, iceball4321)
 main: altitude.source.code.Main
 database: false
-depend:
+depend: [HolographicDisplays]
 prefix: Watch-Blocks
-softdepend: 
-loadbefore: 
 commands:
   watchtest:
     description: A dummy command!

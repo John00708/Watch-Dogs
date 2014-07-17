@@ -1,5 +1,6 @@
 package altitude.source.code;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,6 +11,12 @@ public class Main extends JavaPlugin implements Listener{
 	@Override
 	public void onEnable() {
 		getLogger().info("Watch-Blocks v1.1 has been enabled!"); 
+	    if (!Bukkit.getPluginManager().isPluginEnabled("HolographicDisplays")) {
+	        getLogger().severe("*** HolographicDisplays is not installed or not enabled. ***");
+	        getLogger().severe("*** This plugin will be disabled. ***");
+	        this.setEnabled(false);
+	        return;
+	    }
 		getServer().getPluginManager().registerEvents(this, this);
 		new MainPhone(this);
 	}
