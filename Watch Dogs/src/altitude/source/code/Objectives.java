@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 
 public class Objectives {
 	
-	public HashMap<Player,Integer> completedobj = new HashMap<Player,Integer>();//objective that player completed, number
-	public HashMap<Integer,String> objectives = new HashMap<Integer,String>();//objective by number
+	public static HashMap<Player,Integer> completedobj = new HashMap<Player,Integer>();//objective that player completed, number
+	public static HashMap<Integer,String> objectives = new HashMap<Integer,String>();//objective by number
 	
 	public void add(){
 		objectives.put(1, "Shoot Maurice");
