@@ -259,6 +259,12 @@ public class Objectives {
 		objectives.put(247, "Find Damien");
 		objectives.put(248, "Walk away or shoot Maurice");
 	}
+	
+	public void setObjectiveCompleted(Player p){//sets the current objective completed
+		int i = completedobj.get(p);
+		i++;
+		completedobj.put(p, i);
+	}
 	public String getCurrentObjective(Player p){ //gets objective that player is on, but hasnt comleted
 		add();
 		int i = completedobj.get(p);
