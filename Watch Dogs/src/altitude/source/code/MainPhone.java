@@ -15,7 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EntityEquipment;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -23,11 +23,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class MainPhone implements Listener{
+public class MainPhone implements Listener {
 	private Inventory inv;
 	private ItemStack Camera, Info, Battery, Barrier;
 	ArrayList<Location> playerlocarray = new ArrayList<Location>();
-	
+
 	public MainPhone(Plugin p) {
 		inv = Bukkit.getServer().createInventory(null, 9, "Hack Selector");
 		ItemStack Barrier = new ItemStack(Material.FENCE);
@@ -42,39 +42,52 @@ public class MainPhone implements Listener{
 		Infom.setDisplayName(ChatColor.DARK_GREEN + "Info");
 		Barrierm.setDisplayName(ChatColor.GOLD + "Barrier");
 		Batterym.setDisplayName(ChatColor.RED + "Battery");
-		Cameram.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "This App allows you ", "to get into any exploited ", "ctOS Camera. Just look ", "directly at the camera and then ", "choose this app!"));
-		Infom.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "This App, when clicked, ", "shows you many useful information ", "about the town!"));
-		Barrierm.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "This App allows you ", "to retract or raise any exploited ", "ctOS Barriers. Just look ", "at the barrier and then", "choose this app!"));
-		Batterym.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "This App shows you ", "the current battery level ", "and allows you to buy energy!"));
+		Cameram.setLore(Arrays.asList(ChatColor.DARK_PURPLE
+				+ "This App allows you ", "to get into any exploited ", "ctOS Camera. Just look ", "directly at the camera and then ", "choose this app!"));
+		Infom.setLore(Arrays.asList(ChatColor.DARK_PURPLE
+				+ "This App, when clicked, ", "shows you many useful information ", "about the town!"));
+		Barrierm.setLore(Arrays.asList(ChatColor.DARK_PURPLE
+				+ "This App allows you ", "to retract or raise any exploited ", "ctOS Barriers. Just look ", "at the barrier and then", "choose this app!"));
+		Batterym.setLore(Arrays.asList(ChatColor.DARK_PURPLE+ "This App shows you ", "the current battery level ", "and allows you to buy energy!"));
 		inv.setItem(2, Camera);
 		inv.setItem(4, Info);
 		inv.setItem(6, Battery);
 		inv.setItem(8, Barrier);
-		Bukkit.getServer().getPluginManager().registerEvents(this, (Plugin) this);
+		Bukkit.getServer().getPluginManager()
+				.registerEvents(this, (Plugin) this);
 	}
-	public void show(Player p){
+
+	public void show(Player p) {
 		p.openInventory(inv);
 	}
+
+	@SuppressWarnings("deprecation")
 	@EventHandler
-	public void onInventoryClick(InventoryClickEvent e){
-		if(!e.getInventory().getName().equalsIgnoreCase(inv.getName())) return;
-		if(e.getCurrentItem().getItemMeta() == null) return;
-		if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Camera")){
-			e.setCancelled(true);                                    //Do things with Camera
+	public void onInventoryClick(InventoryClickEvent e) {
+		if (!e.getInventory().getName().equalsIgnoreCase(inv.getName()))
+			return;
+		if (e.getCurrentItem().getItemMeta() == null)
+			return;
+		if (e.getCurrentItem().getItemMeta().getDisplayName()
+				.contains("Camera")) {
+			e.setCancelled(true); // Do things with Camera
 			e.getWhoClicked().closeInventory();
 			Location plocation = e.getWhoClicked().getLocation();
 			Block tblock = e.getWhoClicked().getTargetBlock(null, 500);
 			Location tblockloc = tblock.getLocation();
 			playerlocarray.add(plocation);
-			if(tblock.getType().equals(Material.GLASS)){
+			if (tblock.getType().equals(Material.GLASS)) {
 				Zombie z = plocation.getWorld().spawn(plocation, Zombie.class);
-				
-				EntityEquipment arm = e.getWhoClicked().getEquipment();
-				z.getEquipment().setHelmet(e.getWhoClicked().getEquipment().getHelmet());
-				z.getEquipment().setLeggings(e.getWhoClicked().getEquipment().getLeggings());
-				z.getEquipment().setChestplate(e.getWhoClicked().getEquipment().getChestplate());
-				z.getEquipment().setBoots(e.getWhoClicked().getEquipment().getBoots());
-				z.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 100000000, 500));
+				z.getEquipment().setHelmet(
+						e.getWhoClicked().getEquipment().getHelmet());
+				z.getEquipment().setLeggings(
+						e.getWhoClicked().getEquipment().getLeggings());
+				z.getEquipment().setChestplate(
+						e.getWhoClicked().getEquipment().getChestplate());
+				z.getEquipment().setBoots(
+						e.getWhoClicked().getEquipment().getBoots());
+				z.addPotionEffect(new PotionEffect(PotionEffectType.SLOW,
+						100000000, 500));
 				z.setTarget(null);
 				z.setFireTicks(0);
 				e.getWhoClicked().teleport(tblockloc);
@@ -84,37 +97,42 @@ public class MainPhone implements Listener{
 				e.getWhoClicked().getInventory().setItem(8, returnitem);
 			}
 		}
-		if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Info")){
-			e.getWhoClicked().closeInventory();                      //Do things with Info
+		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Info")) {
+			e.getWhoClicked().closeInventory(); // Do things with Info
 			e.setCancelled(true);
-			
+
 		}
-		if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Battery")){
-			e.setCancelled(true);                                    //Do things with Battery
+		if (e.getCurrentItem().getItemMeta().getDisplayName()
+				.contains("Battery")) {
+			e.setCancelled(true); // Do things with Battery
 			e.getWhoClicked().closeInventory();
-			
+
 		}
-		if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Barrier")){
-			e.setCancelled(true);                                    //Do things with Barrier
+		if (e.getCurrentItem().getItemMeta().getDisplayName()
+				.contains("Barrier")) {
+			e.setCancelled(true); // Do things with Barrier
 			e.getWhoClicked().closeInventory();
-			
+
 		}
 	}
-	
-	
-	
+
 	@EventHandler
-	public void onPlayerInteract(PlayerInteractEvent e){
-		if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
+	public void onPlayerInteract(PlayerInteractEvent e) {
+		if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK))
+			return;
 		show(e.getPlayer());
 	}
+
 	@EventHandler
-	public void onPlayerInventoryClick(InventoryClickEvent e){
-		if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Return")){
+	public boolean onPlayerSneak(PlayerToggleSneakEvent e) {
+		if (e.getPlayer().isSneaking()) {
+			Location loc = playerlocarray.get(0);
+			e.getPlayer().teleport(loc);
+			e.getPlayer().getInventory().removeItem(new ItemStack(e.getPlayer().getItemInHand()));
 			
-		}else{
-			return;
+			return true;
 		}
+		return false;
+
 	}
 }
-
