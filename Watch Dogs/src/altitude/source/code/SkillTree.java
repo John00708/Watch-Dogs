@@ -2,7 +2,6 @@ package altitude.source.code;
 
 import java.util.HashMap;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,10 +21,10 @@ public class SkillTree extends JavaPlugin{
       		p.sendMessage("SKILLS");
       		p.sendMessage("Pistol Expert = " + pistol.get(p));
       		p.sendMessage("Extra Battery = " + battery.get(p));
-      		p.sendMessage("Pistol Expert = " + blockers.get(p));
-      		p.sendMessage("The Blockers = " + pistol.get(p));
-      		p.sendMessage("The ATM Hack Boost = " + pistol.get(p));
-      		p.sendMessage("The Steam Pipes = " + pistol.get(p));
+      		p.sendMessage("The Rapid Reload = " + reload.get(p));
+      		p.sendMessage("The Blockers = " + blockers.get(p));
+      		p.sendMessage("The ATM Hack Boost = " + hackboost.get(p));
+      		p.sendMessage("The Steam Pipes = " + pipes.get(p));
       	}
       return false;
       }
