@@ -2,6 +2,7 @@ package altitude.source.code;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,12 +24,16 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.gmail.filoghost.holograms.api.HolographicDisplaysAPI;
+
 public class MainPhone implements Listener {
 	private Inventory inv;
 	private ItemStack Camera, Info, Battery, Barrier;
 	ArrayList<Location> playerlocarray = new ArrayList<Location>();
-
-	public MainPhone(Plugin p) {
+	HashMap<Integer, String> battery = new HashMap<Integer, String>();
+	
+	
+	public MainPhone() {
 		inv = Bukkit.getServer().createInventory(null, 9, "Hack Selector");
 		ItemStack Barrier = new ItemStack(Material.FENCE);
 		ItemStack Info = new ItemStack(Material.PAPER);
@@ -56,6 +61,7 @@ public class MainPhone implements Listener {
 		Bukkit.getServer().getPluginManager()
 				.registerEvents(this, (Plugin) this);
 	}
+
 
 	public void show(Player p) {
 		p.openInventory(inv);
