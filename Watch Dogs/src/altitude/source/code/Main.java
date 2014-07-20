@@ -3,11 +3,14 @@ package altitude.source.code;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -57,6 +60,7 @@ public class Main extends JavaPlugin implements Listener {
 				getConfig().set("spawn.x", p.getLocation().getX());
 				getConfig().set("spawn.y", p.getLocation().getY());
 				getConfig().set("spawn.z", p.getLocation().getZ());
+				saveConfig();
 				p.sendMessage(ChatColor.GREEN + "Spawn set!");
 			} else {
 				p.sendMessage(ChatColor.BLUE + "Altitude>> You don't have enough permissions!");
@@ -66,8 +70,7 @@ public class Main extends JavaPlugin implements Listener {
 					p.sendMessage(ChatColor.RED + "Spawn has not been set yet!");
 					return true;
 				}
-				World w = Bukkit.getServer().getWorld(
-						getConfig().getString("spawn.world"));
+				World w = Bukkit.getServer().getWorld(getConfig().getString("spawn.world"));
 				double x = getConfig().getDouble("spawn.x");
 				double y = getConfig().getDouble("spawn.y");
 				double z = getConfig().getDouble("spawn.z");
@@ -77,5 +80,8 @@ public class Main extends JavaPlugin implements Listener {
 
 		return false;
 	}
-
+	
+	ItemStack bandage = new ItemStack(Material.PAPER);
+	ItemMeta bandagem = bandage.getItemMeta();
+	
 }
