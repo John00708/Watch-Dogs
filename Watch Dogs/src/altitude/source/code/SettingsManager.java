@@ -1,4 +1,4 @@
-2package altitude.source.code;
+package altitude.source.code;
 
 import java.io.File;
 import java.io.IOException;
