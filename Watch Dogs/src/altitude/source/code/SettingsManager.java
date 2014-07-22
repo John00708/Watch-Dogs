@@ -2,22 +2,27 @@ package altitude.source.code;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+
+import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
 public class SettingsManager {
 	private SettingsManager() {
 	}
-
+	public static Economy econ = null;
 	static SettingsManager instance = new SettingsManager();
 
 	public static SettingsManager getInstance() {
 		return instance;
 	}
+	HashMap<String, Integer> batsortage = new HashMap<String, Integer>();
 
 	Plugin p;
 
@@ -78,4 +83,18 @@ public class SettingsManager {
 	public void reloadConfig() {
 		battery = YamlConfiguration.loadConfiguration(bfile);
 	}
+	@SuppressWarnings("unused")
+	private boolean setupEconomy() {
+		if (Bukkit.getServer().getPluginManager().getPlugin("Vault") == null){
+			return false;
+		}
+		RegisteredServiceProvider<Economy> rsp= Bukkit.getServer().getServicesManager().getRegistration(Economy.class);
+		if(rsp == null){
+			return false;
+		}
+		econ = rsp.getProvider();
+		return econ != null;
+	}
+	
+	
 }

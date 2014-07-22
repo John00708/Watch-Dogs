@@ -1,0 +1,30 @@
+name: Watch-Blocks
+version: 1.5
+description: A plugin that simulates the Watch Dogs game
+main: altitude.source.code.Main
+author: The Altitude Dev Team.
+
+commands:
+	setspawn:
+        usage: /<command>
+	    description: Allows you to set the spawn point.
+	skill:
+		usage: /<command>
+		description: Use this command to show your skills.
+	spawn:
+	    usage: /<command>
+	    description: Teleports you to the spawn point.
+	confreload:
+	    usage: /<command>
+	    description: Reloads the watch-blocks config.
+	    
+permissions:
+	watchblocks.setspawn:
+		description: Use this to be able to use the setspawn command.
+		default: op
+	watchblocks.reload
+		description: Use this to be able to use the /confreload command.
+		default: op
+	
+	    
+		    

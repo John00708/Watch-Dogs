@@ -13,7 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -37,37 +36,34 @@ public class Main extends JavaPlugin implements Listener {
 		}
 		getServer().getPluginManager().registerEvents(this, this);
 		getServer().getPluginManager().registerEvents(new MainPhone(), this);
-		getServer().getPluginManager().registerEvents(new Holograms(), this);
+		getServer().getPluginManager().registerEvents(new InteractListener(), this);
 		Recipes(); // Recipes.
 	}
+	
 
 	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent e) {
-		Bukkit.broadcastMessage(ChatColor.YELLOW + "Player " + e.getPlayer() + " has joined the game!"); // Some basic Events.
-	}
-
-	public void onPlayerLeave(PlayerQuitEvent e) {
-		Bukkit.broadcastMessage(ChatColor.YELLOW + "Player " + e.getPlayer() + "has left the game!");
+	public boolean onPlayerJoinEvent(PlayerJoinEvent e){
+		if(!(e.getPlayer().hasPlayedBefore())){
+			Bukkit.broadcastMessage(ChatColor.AQUA + "Player " + e.getPlayer().getName() + " joined use for the first time!");
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public void onDisable() {
 		plugin = null;
-		getLogger().info("Watch-Blocks v1.1 has been disabled!"); // Showing when the plugin has been disabled
+		getLogger().info("Watch-Blocks v1.5 has been disabled!"); // Showing when the plugin has been disabled
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if (cmd.getName().equalsIgnoreCase("watchtest")) { // Adding a dummy command
-			sender.sendMessage(ChatColor.AQUA + "The test command works! As of now."); // Sending an Aqua Message back to test if it works
-			return true;
-		}
 		if (!(p instanceof Player)) {
 			p.sendMessage(ChatColor.RED + "This command is only for players!");
 			return true;
 		}
-		if (cmd.getName().equalsIgnoreCase("setspawn")) {
+		if (cmd.getName().equalsIgnoreCase("setspawn")) { //
 			if (p.hasPermission("watchblocks.setspawn") || p.isOp()) {
 				getConfig().set("spawn.world", p.getLocation().getWorld().getName());
 				getConfig().set("spawn.x", p.getLocation().getX());
@@ -79,7 +75,7 @@ public class Main extends JavaPlugin implements Listener {
 				p.sendMessage(ChatColor.BLUE + "Altitude>> You don't have enough permissions!");
 				return true;
 			}
-			if (cmd.getName().equalsIgnoreCase("spawn")) {
+			if (cmd.getName().equalsIgnoreCase("spawn")) { //
 				if (getConfig().getConfigurationSection("spawn") == null) {
 					p.sendMessage(ChatColor.RED + "Spawn has not been set yet!");
 					return true;
@@ -90,7 +86,7 @@ public class Main extends JavaPlugin implements Listener {
 				double z = getConfig().getDouble("spawn.z");
 				p.teleport(new Location(w, x, y, z));
 			}
-			if (cmd.getName().equalsIgnoreCase("confreload")) {
+			if (cmd.getName().equalsIgnoreCase("confreload")) { //
 				if (p.hasPermission("watchblocks.reload")) {
 					settings.reloadConfig();
 				} else {
