@@ -1,4 +1,4 @@
-package altitude.source.code;
+package altitude.source.code
 
 import java.util.HashMap;
 
